@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#hangman-canvas {
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+#word-display {
+  font-size: 2em;
+  letter-spacing: 10px;
+  margin-bottom: 20px;
+}
+
+#lives {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+#message {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: green;
+}
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.key.disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+#reset-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#reset-button:hover {
+  background-color: #45a049;
+}
