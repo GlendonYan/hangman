@@ -1,4 +1,5 @@
-const words = ['apple'];
+
+//const words = [];
 let selectedWord = '';
 let guessedLetters = [];
 let lives = 6;
@@ -12,8 +13,20 @@ const canvas = document.getElementById('hangman-canvas');
 const ctx = canvas.getContext('2d');
 
 // Initialize the game
-function initializeGame() {
-  selectedWord = words[Math.floor(Math.random() * words.length)];
+function initializeGame_old(selectedWord) {
+//  selectedWord = words[Math.floor(Math.random() * words.length)];
+  guessedLetters = [];
+  lives = 6;
+  renderWord();
+  renderKeyboard();
+  updateLives();
+  message.textContent = '';
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+  drawGallows(); // Draw the gallows
+}
+
+function initializeGame(word) {
+  selectedWord = word;
   guessedLetters = [];
   lives = 6;
   renderWord();
@@ -176,7 +189,20 @@ function drawHangman() {
 }
 
 // Reset the game
-resetButton.addEventListener('click', initializeGame);
+// resetButton.addEventListener('click', initializeGame);
+// update the reset to include a new word.
+resetButton.addEventListener('click', () => {
+  fetch("https://random-word-api.herokuapp.com/word")
+    .then(response => response.json())
+    .then(data => {
+      let randomWord = data[0];
+      initializeGame(randomWord);
+    });
+});
 
-// Start the game when the page loads
-initializeGame();
+fetch("https://random-word-api.herokuapp.com/word")
+  .then(response => response.json())
+  .then(data => {
+    let randomWord = data[0];
+    initializeGame(randomWord);
+  });
